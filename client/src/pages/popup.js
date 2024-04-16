@@ -14,7 +14,7 @@ const Popup = ({ message, onClose, status, doRedirect}) => {
       }, 2000);
     }
     return () => clearTimeout(timer);
-  }, [onClose, status]);
+  }, [onClose, status,doRedirect]);
 
   return (
     <div className="popup-container">
