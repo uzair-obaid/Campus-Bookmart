@@ -80,9 +80,9 @@ npm start
 
 This project was built collaboratively by the following team members:
 
+- Mohammed Shuraih Shaikh -> Contact - [shuraihshaikh.cs22@bmsce.ac.in](mailto:shuraihshaikh.cs22@bmsce.ac.in)
 - Mohammed Uzair Obaid -> Contact - [uzairobaid.cs22@bmsce.ac.in](mailto:uzairobaid.cs22@bmsce.ac.in)
 - Nakul Rajesh Dhole -> Contact - [rajeshdhole.cs22@bmsce.ac.in](mailto:rajeshdhole.cs22@bmsce.ac.in)
 - Mohammed Yaseen Imam -> Contact - [yaseeniman.cs22@bmsce.ac.in](mailto:yaseeniman.cs22@bmsce.ac.in)
   
-## Contact
-For questions or feedback, feel free to contact the project maintainer at [shuraih15@gmail.com](mailto:shuraih15@gmail.com).
+
