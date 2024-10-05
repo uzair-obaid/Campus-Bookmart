@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import Popup from './popup';
+import Popup from "./popup";
 
 const SignUpForm = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -10,36 +10,34 @@ const SignUpForm = () => {
   const [doRedirect, setDoRedirect] = useState(false);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    email: '',
-    username: '',
-    password: ''
+    email: "",
+    username: "",
+    password: "",
   });
 
   const { email, username, password } = formData;
 
   const handleClosePopup = (doredirect) => {
     setShowPopup(false);
-    if(doredirect){
-      navigate('/login');
+    if (doredirect) {
+      navigate("/login");
     }
-    
   };
 
-  const handleChange = e =>
+  const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://bookmart-website.onrender.com/api/auth/signup', {
-        method: 'POST',
+      const response = await fetch("http://127.0.0.1:5000/api/auth/signup", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, username, password })
+        body: JSON.stringify({ email, username, password }),
       });
 
-      
       if (response.status === 201) {
         setMsg("Signup successful");
         setStatus(true);
@@ -87,8 +85,10 @@ const SignUpForm = () => {
           minLength="6"
           required
         />
-        
-        <button className='btn-1' type="submit">Register</button>
+
+        <button className="btn-1" type="submit">
+          Register
+        </button>
       </form>
       {showPopup && (
         <Popup
@@ -98,8 +98,14 @@ const SignUpForm = () => {
           doRedirect={doRedirect}
         />
       )}
-      <div style={{ marginTop: '1.5rem' }}>
-        <p> Already have an account?<Link className="nav-link" to="/login">Login</Link></p>
+      <div style={{ marginTop: "1.5rem" }}>
+        <p>
+          {" "}
+          Already have an account?
+          <Link className="nav-link" to="/login">
+            Login
+          </Link>
+        </p>
       </div>
     </div>
   );

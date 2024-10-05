@@ -13,25 +13,24 @@ a {
 a:hover {
   text-decoration: none;
 }
-.file-print{
+.file-print {
   height: 10rem;
   border: 0.1rem solid #eee;
   margin-bottom: 0.1rem;
+  padding-top: 25px;
 }
 
-.user-print{
-  border: 0.1rem solid black;
+.user-print {
+  border: 0.1rem solid rgb(211, 208, 208);
 }
 
-.btn-2{
-  color: antiquewhite; 
+.btn-2 {
+  color: antiquewhite;
   background-color: #007bff;
   border-radius: 0.5rem;
-  margin-top: .5rem;
-  margin-left: .5rem;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
 }
-
-
 
 .product-grid {
   display: grid;
@@ -77,12 +76,9 @@ button:hover {
   background-color: #0056b3;
 }
 
-
 a {
   text-decoration: none;
 }
-
-
 
 .navbar {
   padding: 20px;
@@ -117,7 +113,6 @@ a {
   margin: 40px auto;
   padding: 20px;
 }
-
 
 .caro-text {
   color: #dfd1d1;
@@ -215,29 +210,28 @@ input {
 
 body {
   font-family: Arial, sans-serif;
-  position: relative; 
-  margin-bottom: 100px; 
+  position: relative;
+  margin-bottom: 100px;
 }
 .popup-container {
   width: 10rem;
   position: fixed;
-  bottom: 20px; 
-  left: 50%; 
-  transform: translateX(-50%); 
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   padding: 20px;
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   text-align: center;
-  z-index: 999; 
+  z-index: 999;
 }
 .green-tick {
   color: green;
   font-size: 36px;
   margin-bottom: 10px;
 }
-
 
 header,
 nav,
@@ -273,8 +267,6 @@ form {
   margin-top: 20px;
 }
 
-
-
 .content {
   text-align: center;
 }
@@ -284,20 +276,16 @@ form {
   color: #333;
 }
 
-
 footer {
   text-align: center;
   margin-top: 20px;
 }
-
 
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
-
-
 
 main {
   margin: 20px;
@@ -307,14 +295,13 @@ main {
   display: flex;
   align-items: center;
   margin: auto;
-  
 }
-.orders div{
+.orders div {
   margin-right: 1rem;
 }
 
 .btn-1 {
-  margin:.3rem 0 .3rem;
+  margin: 0.3rem 0 0.3rem;
   background-color: #4caf50;
   color: white;
   border: none;
@@ -337,7 +324,6 @@ main {
   margin-bottom: 20px;
   list-style-type: none;
   font-size: medium;
-  
 }
 
 .order-details {
@@ -345,13 +331,13 @@ main {
 }
 
 .order-details h3,
-.order-details p{
-  font-size: .8rem;
+.order-details p {
+  font-size: 0.8rem;
   margin-top: 4%;
 }
 
 .order-items {
-  list-style-type:none;
+  list-style-type: none;
   padding-left: 0;
 }
 
@@ -359,14 +345,14 @@ main {
   border-bottom: 2px solid #eee;
   padding-left: 5%;
   display: flex;
-  
 }
-.order-items-desc{
+.order-items-desc {
   display: flex;
   padding-left: 5%;
   font-weight: 600;
 }
-.order-item div,.order-items-desc div{
+.order-item div,
+.order-items-desc div {
   font-size: small;
   border-right: #eee;
   padding-right: 1rem;
@@ -375,9 +361,9 @@ main {
   width: 25%;
 }
 
-
 @media screen and (max-width: 768px) {
-  .order-item,.order-items-desc{
+  .order-item,
+  .order-items-desc {
     padding-left: 15%;
     align-items: center;
     justify-content: space-evenly;

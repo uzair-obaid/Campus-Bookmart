@@ -41,9 +41,7 @@ a {
   max-width: 600px;
   margin: 40px auto;
   padding: 20px;
-  
 }
-
 
 .caro-text {
   color: #dfd1d1;
@@ -96,15 +94,12 @@ input {
   font-size: 14px;
 }
 
-
 .product {
   border: 1px solid #ddd;
   border-radius: 5px;
   padding: 20px;
   text-align: center;
 }
-
-
 
 .product h3 {
   margin: 10px 0;
@@ -130,20 +125,19 @@ input {
   background-color: #0056b3;
 }
 
-
 .popup-container {
   width: 10rem;
   position: fixed;
   bottom: 20px;
-  left: 50%; 
-  transform: translateX(-50%); 
+  left: 50%;
+  transform: translateX(-50%);
   padding: 20px;
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   text-align: center;
-  z-index: 999; 
+  z-index: 999;
 }
 .green-tick {
   color: green;
@@ -189,7 +183,6 @@ form {
   margin-top: 10px;
 }
 
-
 .content {
   text-align: center;
 }
@@ -199,13 +192,10 @@ form {
   color: #333;
 }
 
-
-
 footer {
   text-align: center;
   margin-top: 20px;
 }
-
 
 body {
   font-family: Arial, sans-serif;
@@ -240,25 +230,21 @@ main {
   font-weight: bold;
 }
 
-.filter-div{
+.filter-div {
   text-align: right;
   margin-left: 0;
 }
 
-
-
-.btn-2{
-  color: antiquewhite; 
+.btn-2 {
+  color: antiquewhite;
   width: 6rem;
   height: 2rem;
   background-color: #007bff;
-  border:none;
+  border: none;
   border-radius: 0.5rem;
-  margin-top: .5rem;
-  margin-left: .5rem;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
 }
-
-
 
 footer {
   background-color: #f2f2f2;
@@ -282,28 +268,25 @@ footer {
   padding: 10px;
 }
 
-
-
 .product-card-img {
   margin-top: 5px;
   height: 150px;
-  width:150px;
+  width: 150px;
   justify-content: center;
   align-items: center;
 }
 
 .product-card div {
   margin-top: 5px;
-  
 }
 
-.product-card div p{
+.product-card div p {
   margin: 0;
   padding: 0;
 }
 
 .btn-1 {
-  margin:.3rem 0 .3rem;
+  margin: 0.3rem 0 0.3rem;
   background-color: #4caf50;
   color: white;
   border: none;
@@ -337,7 +320,6 @@ footer {
   margin-bottom: 20px;
   list-style-type: none;
   font-size: medium;
-  
 }
 
 .order-details {
@@ -345,25 +327,27 @@ footer {
 }
 
 .order-details h3,
-.order-details p{
-  font-size: .8rem;
+.order-details p {
+  font-size: 0.8rem;
   margin-top: 4%;
 }
 
 .order-items {
-  list-style-type:none;
+  list-style-type: none;
   padding-left: 0;
 }
 
-.cart-item,.order-item {
+.cart-item,
+.order-item {
   border-bottom: 2px solid #eee;
   padding-left: 5%;
   display: flex;
   justify-content: space-evenly;
 }
-.order-item div,.cart-item div,
+.order-item div,
+.cart-item div,
 .order-items-desc div,
-.cart-items-desc div{
+.cart-items-desc div {
   font-size: small;
   border-right: #eee;
   padding-right: 1rem;
@@ -372,7 +356,8 @@ footer {
   width: 25%;
 }
 
-.order-items-desc,.cart-items-desc{
+.order-items-desc,
+.cart-items-desc {
   display: flex;
   padding-left: 5%;
   font-weight: 600;
@@ -382,40 +367,38 @@ footer {
   color: #333;
 }
 
-.quantitize-btn{
+.quantitize-btn {
   border-radius: 0.5rem;
-  height: 1.3rem;
-  margin: .1rem;
-  width: 1.5rem;
-
-
+  height: 18px;
+  margin: 0.1rem;
+  width: 18px;
+  padding: 0px;
 }
 
-
 @media screen and (max-width: 768px) {
-  .order-item,.order-items-desc
-  {
+  .order-item,
+  .order-items-desc {
     padding-left: 15%;
     align-items: center;
     justify-content: space-evenly;
   }
- 
-  .cart-item div,.cart-items-desc div{
+
+  .cart-item div,
+  .cart-items-desc div {
     padding: 0;
   }
-  
-  .product-card-img{
+
+  .product-card-img {
     height: 100px;
     width: 100px;
   }
-  .product-card{
-    height:260px;
-    width:180px;
+  .product-card {
+    height: 260px;
+    width: 180px;
   }
   .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 20px;
   }
-  
 }

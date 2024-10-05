@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function Order() {
   const [orders, setOrders] = useState([]);
@@ -14,18 +14,18 @@ function Order() {
 
   const fetchOrders = async () => {
     try {
-      const token = JSON.parse(sessionStorage.getItem('token'));
+      const token = JSON.parse(sessionStorage.getItem("token"));
       if (!token) {
         setLoading(false);
         setLoggedin(false);
       } else {
         setLoggedin(true);
-        const response = await axios.get('https://bookmart-website.onrender.com/api/orders/', {
+        const response = await axios.get("http://127.0.0.1:5000/api/orders/", {
           headers: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         });
-        const sortedOrders = response.data.orders.reverse(); 
+        const sortedOrders = response.data.orders.reverse();
         setOrders(sortedOrders);
         setLoading(false);
       }
@@ -38,7 +38,7 @@ function Order() {
     setExpandedOrderId((prevId) => (prevId === orderId ? null : orderId));
     setExpandedOrders((prev) => ({
       ...prev,
-      [orderId]: !prev[orderId]
+      [orderId]: !prev[orderId],
     }));
   };
 
@@ -54,36 +54,51 @@ function Order() {
           {orders.map((order, index) => (
             <li key={index} className="order">
               <div className="order-details">
-                <h3>Order Date: {new Date(order.order_date).toLocaleString()}</h3>
-                <p className="order-status">Status: {order.status === 'pending' ? 'processing...' : order.status==='readytopick'? 'Ready to pick':order.status}</p>
-                
+                <h3>
+                  Order Date: {new Date(order.order_date).toLocaleString()}
+                </h3>
+                <p className="order-status">
+                  Status:{" "}
+                  {order.status === "pending"
+                    ? "processing..."
+                    : order.status === "readytopick"
+                    ? "Ready to pick"
+                    : order.status}
+                </p>
+
                 {expandedOrderId === order._id && expandedOrders[order._id] && (
                   <div>
                     <ul className="order-items">
-                    <div className='order-items-desc'>
-                            <div>Name</div>
-                            <div>Price</div>
-                            <div>Quantity</div>
-                            <div>Total</div>
-                          </div>
+                      <div className="order-items-desc">
+                        <div>Name</div>
+                        <div>Price</div>
+                        <div>Quantity</div>
+                        <div>Total</div>
+                      </div>
                       {order.order_items.map((item, idx) => (
-                        
-                  
                         <li key={idx} className="order-item">
                           <div>{item.name}</div>
                           <div>Rs. {item.price}</div>
                           <div>{item.quantity}</div>
                           <div>Rs. {item.price * item.quantity}</div>
                         </li>
-                        
                       ))}
                     </ul>
-                    <p><b><i>Bill Amount :</i></b>{'\u00A0\u00A0\u00A0'} Rs. {order.bill_amt}</p>
-                    
+                    <p>
+                      <b>
+                        <i>Bill Amount :</i>
+                      </b>
+                      {"\u00A0\u00A0\u00A0"} Rs. {order.bill_amt}
+                    </p>
                   </div>
                 )}
-                <button className='btn-1' onClick={() => toggleOrderDetails(order._id)}>
-                  {expandedOrderId === order._id && expandedOrders[order._id] ? 'Less' : 'More...'}
+                <button
+                  className="btn-1"
+                  onClick={() => toggleOrderDetails(order._id)}
+                >
+                  {expandedOrderId === order._id && expandedOrders[order._id]
+                    ? "Less"
+                    : "More..."}
                 </button>
               </div>
             </li>

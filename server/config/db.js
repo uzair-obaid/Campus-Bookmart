@@ -1,13 +1,13 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const connectDB = async () => {
-    try {
-        await mongoose.connect('mongodb+srv://shuraih15:hz0V3zvzNcG3obMD@bookstore.bo7kawh.mongodb.net/');
-        console.log('MongoDB Connected');
-    } catch (error) {
-        console.error('Error connecting to MongoDB:', error.message);
-        process.exit(1); 
-    }
+  try {
+    await mongoose.connect("mongodb://127.0.0.1:27017/bookmart_website");
+    console.log("MongoDB Connected");
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error.message);
+    process.exit(1);
+  }
 };
 
 module.exports = connectDB;

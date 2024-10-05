@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
 
 const ProductGrid = () => {
   const nameref = useRef(null);
@@ -17,15 +17,20 @@ const ProductGrid = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('https://bookmart-website.onrender.com/api/product/');
-      const productsWithImageUrl = await Promise.all(response.data.map(async product => {
-        const imgResponse = await axios.get(`https://bookmart-website.onrender.com/api/product/${product.name}/image`, { responseType: 'blob' });
-        const imageUrl = URL.createObjectURL(imgResponse.data);
-        return { ...product, img: imageUrl };
-      }));
+      const response = await axios.get("http://127.0.0.1:5000/api/product/");
+      const productsWithImageUrl = await Promise.all(
+        response.data.map(async (product) => {
+          const imgResponse = await axios.get(
+            `http://127.0.0.1:5000/api/product/${product.name}/image`,
+            { responseType: "blob" }
+          );
+          const imageUrl = URL.createObjectURL(imgResponse.data);
+          return { ...product, img: imageUrl };
+        })
+      );
       setProducts(productsWithImageUrl);
     } catch (error) {
-      console.error('Error fetching products:', error);
+      console.error("Error fetching products:", error);
     }
   };
   const addProduct = async () => {
@@ -37,38 +42,38 @@ const ProductGrid = () => {
       const availability = availref.current.value.trim();
 
       if (!name || !price || !availability) {
-        console.error('Name, price, and availability are required.');
+        console.error("Name, price, and availability are required.");
         return;
       }
 
       const formData = new FormData();
-      formData.append('name', name);
-      formData.append('img', imgref.current.files[0]);
-      formData.append('availability', availability);
-      formData.append('price', price);
-      formData.append('type', type);
-      formData.append('subtype', subtype);
+      formData.append("name", name);
+      formData.append("img", imgref.current.files[0]);
+      formData.append("availability", availability);
+      formData.append("price", price);
+      formData.append("type", type);
+      formData.append("subtype", subtype);
 
-      await axios.post('https://bookmart-website.onrender.com/api/product/', formData, {
+      await axios.post("http://127.0.0.1:5000/api/product/", formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+          "Content-Type": "multipart/form-data",
+        },
       });
 
       fetchProducts();
       resetForm();
     } catch (error) {
-      console.error('Error adding product:', error);
+      console.error("Error adding product:", error);
     }
   };
 
   const resetForm = () => {
-    nameref.current.value = '';
-    typeref.current.value = '';
-    subtyperef.current.value = '';
+    nameref.current.value = "";
+    typeref.current.value = "";
+    subtyperef.current.value = "";
     imgref.current.value = null;
-    availref.current.value = '';
-    priceref.current.value = '';
+    availref.current.value = "";
+    priceref.current.value = "";
   };
 
   const handleEdit = (product) => {
@@ -84,17 +89,20 @@ const ProductGrid = () => {
         subtype: subtyperef.current.value.trim(),
         price: priceref.current.value.trim(),
         availability: availref.current.value.trim(),
-        img: editingProduct.img 
+        img: editingProduct.img,
       };
 
-      const response = await axios.put(`https://bookmart-website.onrender.com/api/product/${updatedProduct._id}`, updatedProduct);
-      if(response.status === 200){
-        console.log('succesfully updated');
+      const response = await axios.put(
+        `http://127.0.0.1:5000/api/product/${updatedProduct._id}`,
+        updatedProduct
+      );
+      if (response.status === 200) {
+        console.log("succesfully updated");
       }
       fetchProducts();
       cancelEdit();
     } catch (error) {
-      console.error('Error updating product:', error);
+      console.error("Error updating product:", error);
     }
   };
 
@@ -103,54 +111,90 @@ const ProductGrid = () => {
   };
 
   const productCardStyle = {
-    width: '200px',
-    height: '200px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: "200px",
+    height: "200px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   };
 
   return (
     <div>
       <h1>Product Grid</h1>
       <div className="product-grid">
-        {products.map(product => (
+        {products.map((product) => (
           <div key={product._id} className="product-card">
             {editingProduct && editingProduct._id === product._id ? (
               <div>
-                <img src={product.img} alt={product.name} style={productCardStyle} />
+                <img
+                  src={product.img}
+                  alt={product.name}
+                  style={productCardStyle}
+                />
                 <input type="text" defaultValue={product.name} ref={nameref} />
                 <input type="text" defaultValue={product.type} ref={typeref} />
-                <input type="text" defaultValue={product.subtype} ref={subtyperef} />
-                <input type="text" defaultValue={product.availability} ref={availref} />
-                <input type="text" defaultValue={product.price} ref={priceref} />
-                <button className='btn-1' style={{marginRight:'0.2rem'}} onClick={saveEdit}>Save</button>
-                <button className='btn-1' style={{marginLeft:'0.2rem'}} onClick={cancelEdit}>Cancel</button>
+                <input
+                  type="text"
+                  defaultValue={product.subtype}
+                  ref={subtyperef}
+                />
+                <input
+                  type="text"
+                  defaultValue={product.availability}
+                  ref={availref}
+                />
+                <input
+                  type="text"
+                  defaultValue={product.price}
+                  ref={priceref}
+                />
+                <button
+                  className="btn-1"
+                  style={{ marginRight: "0.2rem" }}
+                  onClick={saveEdit}
+                >
+                  Save
+                </button>
+                <button
+                  className="btn-1"
+                  style={{ marginLeft: "0.2rem" }}
+                  onClick={cancelEdit}
+                >
+                  Cancel
+                </button>
               </div>
             ) : (
               <div>
-                <img src={product.img} alt={product.name} style={productCardStyle} />
+                <img
+                  src={product.img}
+                  alt={product.name}
+                  style={productCardStyle}
+                />
                 <p>Name: {product.name}</p>
                 <p>Type: {product.type}</p>
                 <p>Type: {product.subtype}</p>
                 <p>Avail: {product.availability.toString()}</p>
                 <p>Price: {product.price}</p>
-                <button className='btn-1' onClick={() => handleEdit(product)}>Edit</button>
+                <button className="btn-1" onClick={() => handleEdit(product)}>
+                  Edit
+                </button>
               </div>
             )}
           </div>
         ))}
         <div className="product-grid">
-        <h2>Add Product</h2>
-
-        <label htmlFor="img">Image:</label> <input type="file" name="img" accept="image/*" ref={imgref} />
-        <input type="text" placeholder="Name" ref={nameref} />
-        <input type="text" placeholder="Type" ref={typeref} />
-        <input type="text" placeholder="SubType" ref={subtyperef} />
-        <input type="text" placeholder="Availability" ref={availref} />
-        <input type="text" placeholder="Price" ref={priceref} />
-        <button className='btn-1' onClick={addProduct}>Add Product</button>
-      </div>
+          <h2>Add Product</h2>
+          <label htmlFor="img">Image:</label>{" "}
+          <input type="file" name="img" accept="image/*" ref={imgref} />
+          <input type="text" placeholder="Name" ref={nameref} />
+          <input type="text" placeholder="Type" ref={typeref} />
+          <input type="text" placeholder="SubType" ref={subtyperef} />
+          <input type="text" placeholder="Availability" ref={availref} />
+          <input type="text" placeholder="Price" ref={priceref} />
+          <button className="btn-1" onClick={addProduct}>
+            Add Product
+          </button>
+        </div>
       </div>
     </div>
   );
